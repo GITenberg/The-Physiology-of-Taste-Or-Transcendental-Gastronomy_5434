@@ -1,0 +1,31 @@
+_repo: The-Physiology-of-Taste-Or-Transcendental-Gastronomy_5434
+alternative_title: Physiologie du goût. English
+contributor:
+  translator:
+    agent_name: Robinson, Fayette
+    deathdate: 1859
+    gutenberg_agent_id: '1798'
+    url: http://www.gutenberg.org/2009/agents/1798
+creator:
+  author:
+    agent_name: Brillat-Savarin
+    alias: Brillat-Savarin, Jean Anthelme
+    birthdate: 1755
+    deathdate: 1826
+    gutenberg_agent_id: '1797'
+    url: http://www.gutenberg.org/2009/agents/1797
+    wikipedia: http://en.wikipedia.org/wiki/Jean_Anthelme_Brillat-Savarin
+description: ''
+gutenberg_issued: '2004-04-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '5434'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcc 'TX'
+- !lcsh 'Gastronomy'
+title: The Physiology of Taste; Or, Transcendental Gastronomy
+url: http://www.gutenberg.org/ebooks/5434
