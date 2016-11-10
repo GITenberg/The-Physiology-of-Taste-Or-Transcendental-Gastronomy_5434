@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: XbRJaXl3iIpZ9mxvX/nO3ebwX+RTQzgP8WDEYWWcOvVSUhzdEt06HGrBGdQBsq085oXXvsVi8JokjJsIkjrbiZ416biZqHlr/Bjey/GjNTNlfRiMdpekWbbytukFbq9Ku6Csx2+vTf0zWhqaiAO1yX6miSvXHg/OHy/0/PHl1nDLevkOoPs9OD5Zob6ASJSGu+RDuK3DPiMtuuoRnTtMzJDoZ33g5BT36dbZ6XDFTuU9NirQeVY5/5EUgslMQSWQ2484g8lXFFVghHrdH6gSKcTnUVc/+WMwQFuTvpWncozOyXCJdlV0MgjYYw3vZc0OGyzJtv3tbYijtG8wgsp77ARqsh0cwKl/sk8TVXqNmhAOWE0zkR6cz2oXprjKG/NEY6IuRIGfT1J4tbnLawUqoDVBKNqKPXlqO9hhz/HgyMaQrwrlRPiFwyxfS56GVmAF2LJMTUaCo+z2BsNlYcTIpMtRiZGT2aUPIlZ2hqFhkXxggWu2nkzEu1akNQvNDl/MSArM9TS1SFRZBdWThjgabdgZANb81RTK/cGzGJgwZPOWEEFN9HukkX5KiDZeln8dAkA5QEbu7wUC60bDSk9dsxIlmqjFV1E/UYJLd7BJko1sMD9+u0qSxCdMR3LE3365J8DR+vL7zAeZ2CQoFrBlAeufyH7jFTPyM0GtdQU7UgA=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Physiology-of-Taste-Or-Transcendental-Gastronomy_5434
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
