@@ -1,5 +1,5 @@
 _repo: The-Physiology-of-Taste-Or-Transcendental-Gastronomy_5434
-_version: 0.2.0
+_version: 0.2.1
 alternative_title: Physiologie du goût. English
 contributor:
   translator:
@@ -33,5 +33,6 @@ rights_url: http://creativecommons.org/about/pdm
 subjects:
 - !lcc 'TX'
 - !lcsh 'Gastronomy'
+- GITenberg
 title: The Physiology of Taste; Or, Transcendental Gastronomy
 url: http://www.gutenberg.org/ebooks/5434
